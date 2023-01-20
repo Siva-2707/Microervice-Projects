@@ -58,6 +58,7 @@
 				<version>${spring.boot.maven.plugin.version}</version>
 			</plugin>
 	    </plugins>
+		<finalName>employee</finalName>
 	</build>
 
 	
