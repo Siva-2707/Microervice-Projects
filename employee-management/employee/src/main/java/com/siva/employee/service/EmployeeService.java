@@ -2,7 +2,6 @@ package com.siva.employee.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.siva.employee.model.Employee.Employee;
@@ -11,9 +10,8 @@ import com.siva.employee.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
-    @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
@@ -34,6 +32,23 @@ public class EmployeeService {
     public void deleteEmployee(int id) {
         employeeRepository.deleteById(id);
     }
+
+    public void filterByDepartment(String department, List<Employee> filteredEmployees) {
+        filteredEmployees.addAll(
+                employeeRepository.findEmployeeByDepartment(department));
+    }
+
+    public void filterByAge(int age, List<Employee> filteredEmployees) {
+        filteredEmployees.addAll(
+                employeeRepository.findEmployeeByAge(age));
+    }
+
+    public void filterByCurrentExperience(int years, List<Employee> filteredEmployees) {
+        filteredEmployees.addAll(
+                employeeRepository.findEmployeeByCurrentExperience(years));
+    }
+
+    //Update employee
 
     // public List<Employee> findByName(String name) {
     //     String names[] = name.split(" ");

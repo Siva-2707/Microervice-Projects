@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.siva.goal.*")
-public class GoalApplication {
+public class EmployeeMain {
 
 	// private final EmployeeService employeeService;
 
@@ -15,7 +15,7 @@ public class GoalApplication {
 	// 	this.employeeService = employeeService;
 	// }
 	public static void main(String[] args) {
-		SpringApplication.run(GoalApplication.class, args);
+		SpringApplication.run(EmployeeMain.class, args);
 	}
 
 	/*@Override
