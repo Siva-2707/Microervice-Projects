@@ -45,7 +45,7 @@ public class EmployeeService {
 
     public void filterByCurrentExperience(int years, List<Employee> filteredEmployees) {
         filteredEmployees.addAll(
-                employeeRepository.findEmployeeByCurrentExperience(years));
+                employeeRepository.findEmployeeByCurrentCompanyExperience(years));
     }
 
     //Update employee

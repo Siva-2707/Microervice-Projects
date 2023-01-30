@@ -16,6 +16,6 @@ public interface EmployeeRepository extends MongoRepository<Employee, Integer> {
 
     public List<Employee> findEmployeeByAge(int age);
 
-    public List<Employee> findEmployeeByCurrentExperience(int years);
+    public List<Employee> findEmployeeByCurrentCompanyExperience(int years);
 
 }

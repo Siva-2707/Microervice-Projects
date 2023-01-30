@@ -45,7 +45,7 @@ public class Employee {
         @JsonFormat(pattern = "yyyy-MM-dd")
         private LocalDate dateOfBirth;
 
-        // private int empAge;
+        private int age;
 
         @Email
         private String email;
@@ -54,7 +54,7 @@ public class Employee {
 
         private LocalDate dateOfJoining;
 
-        // private int currentCompanyExperience;
+        private int currentCompanyExperience;
 
         private int totalExperience;
 
@@ -66,10 +66,10 @@ public class Employee {
 
         private List<BankAccount> bankAccounts = new ArrayList<>();
 
-        public int getEmpAge() {
-                if (dateOfBirth == null)
-                        return 0;
-                return Period.between(dateOfBirth, LocalDate.now()).getYears();
+        public int getAge() {
+                if (dateOfBirth != null)
+                        return Period.between(dateOfBirth, LocalDate.now()).getYears();
+                return 0;
         }
 
         public int getCurrentCompanyExperience() {
