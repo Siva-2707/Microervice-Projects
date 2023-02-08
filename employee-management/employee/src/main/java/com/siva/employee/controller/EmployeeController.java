@@ -1,5 +1,7 @@
 package com.siva.employee.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -54,7 +56,13 @@ public class EmployeeController {
     public String deleteEmployee(@RequestParam(name = "id") int id) {
         employeeService.deleteEmployee(id);
         return "redirect:/allEmployees";
+    }
 
+    //Filtering based on conditon
+    @GetMapping("/filter")
+    public String filterEmployee(@RequestParam Map<String, String> request, Model model) {
+        model.addAttribute("employees", employeeService.filterEmployees(request));
+        return "employees";
     }
 
     // Searching a employee whith his name

@@ -1,7 +1,5 @@
 package com.siva.employee.restcontroller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -44,22 +42,7 @@ public class EmployeeRestController {
 
     @GetMapping(path = "employee/filter")
     public Set<Employee> filterEmployees(@RequestParam Map<String, String> request) {
-        Set<Employee> filteredEmployees = new HashSet<>();
-        List<Employee> filter = new ArrayList<>();
-        if (request.containsKey("department"))
-            employeeService.filterByDepartment(request.get("department"), filter);
-        if (request.containsKey("age"))
-            employeeService.filterByAge(Integer.parseInt(request.get("age")), filter);
-        if (request.containsKey("currentExperience"))
-            employeeService.filterByCurrentExperience(Integer.parseInt(request.get("currentExperience")), filter);
-        filteredEmployees.addAll(filter);
-
-        return filteredEmployees;
+        return employeeService.filterEmployees(request);
     }
-
-    // @GetMapping(path = "employee/find")
-    // public List<Employee> findEmployeeWithName(@RequestParam(name = "name") String name) {
-    //     return employeeService.findByName(name);
-    // }
 
 }

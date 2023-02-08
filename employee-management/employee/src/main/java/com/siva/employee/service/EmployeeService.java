@@ -1,6 +1,10 @@
 package com.siva.employee.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -33,6 +37,8 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
+    //Filter
+
     public void filterByDepartment(String department, List<Employee> filteredEmployees) {
         filteredEmployees.addAll(
                 employeeRepository.findEmployeeByDepartment(department));
@@ -48,10 +54,17 @@ public class EmployeeService {
                 employeeRepository.findEmployeeByCurrentCompanyExperience(years));
     }
 
-    //Update employee
+    public Set<Employee> filterEmployees(Map<String, String> request) {
+        Set<Employee> filteredEmployees = new HashSet<>();
+        List<Employee> filter = new ArrayList<>();
+        if (request.containsKey("department"))
+            filterByDepartment(request.get("department"), filter);
+        if (request.containsKey("age"))
+            filterByAge(Integer.parseInt(request.get("age")), filter);
+        if (request.containsKey("currentExperience"))
+            filterByCurrentExperience(Integer.parseInt(request.get("currentExperience")), filter);
+        filteredEmployees.addAll(filter);
+        return filteredEmployees;
+    }
 
-    // public List<Employee> findByName(String name) {
-    //     String names[] = name.split(" ");
-    //     return employeeRepository.findByName(names);
-    // }
 }
