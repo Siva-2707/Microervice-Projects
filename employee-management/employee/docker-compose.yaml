@@ -3,9 +3,12 @@ services:
   mongodb:
     image: mongo:latest
     container_name: "mongodb"
-    ports: -27017:27017
+    ports: 
+      -27017:27017
   employee:
     image: employee
     container_name: "employee"
-    ports: -8080:8080
-    links: -mongodb
+    ports: 
+      -8080:8080
+    links: 
+      -mongodb
