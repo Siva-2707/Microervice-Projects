@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.siva.goal.*")
+@ComponentScan(basePackages = "com.siva.employee.*")
 public class EmployeeMain {
 
 	// private final EmployeeService employeeService;

@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,6 +24,9 @@ import lombok.Data;
 @Data
 @Document
 public class Employee {
+
+        @Transient
+        public static final String SEQ_NAME = "employee_sequence";
 
         @Id
         private int id;
@@ -45,6 +49,7 @@ public class Employee {
         @JsonFormat(pattern = "yyyy-MM-dd")
         private LocalDate dateOfBirth;
 
+        @Transient
         private int age;
 
         @Email
@@ -54,6 +59,7 @@ public class Employee {
 
         private LocalDate dateOfJoining;
 
+        @Transient
         private int currentCompanyExperience;
 
         private int totalExperience;

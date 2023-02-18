@@ -2,23 +2,19 @@
   margin: 0;
   padding: 0;
 }
-
 .form {
   margin: 2rem 20%;
 }
-
 .header {
   margin: 2rem 20%;
 }
-
 .gender {
   display: flex;
   justify-content: space-evenly;
+  .genders {
+    align-items: stretch;
+  }
 }
-.gender .genders {
-  align-items: stretch;
-}
-
 /*
 .gender:first-child label {
   margin-bottom: 0;
@@ -28,4 +24,4 @@
 }
 .gender-row {
   margin-bottom: 10px;
-} *//*# sourceMappingURL=employee.css.map */
+} */

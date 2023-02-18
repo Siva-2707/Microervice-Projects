@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.siva.employee.model.Address;
 import com.siva.employee.model.Employee.Employee;
 import com.siva.employee.service.EmployeeService;
+import com.siva.employee.service.SequenceGeneratorService;
 
 @Controller
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+
+    @Autowired
+    private SequenceGeneratorService seqGenerator;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -47,6 +52,7 @@ public class EmployeeController {
     // Creating a new employee
     @PostMapping("/create")
     public String createEmployee(@Valid @ModelAttribute(name = "employee") Employee employee) {
+        employee.setId(seqGenerator.generateSequence(Employee.SEQ_NAME));
         employeeService.createEmployee(employee);
         return "redirect:/allEmployees";
     }
